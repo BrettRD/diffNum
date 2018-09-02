@@ -164,6 +164,11 @@ public:
 		return val;
 	}
 
+	void set(double newValue)
+	{
+		val = newValue;
+	}
+
 };
 
 
@@ -193,3 +198,4 @@ PowResult Parameter::operator^(const Parameter &B)
 {
 	return PowResult(*this, B);
 }
+
