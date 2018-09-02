@@ -3,17 +3,20 @@
 
 int main(){
 
-	Variable A = Variable((double)3);
-	Variable B = Variable((double)4);
-	Variable C = Variable((double)2);
+	//encode constants as the class "Variable", but simply exclude it from the gradient descent
+
+	Variable<double> A(3);
+	Variable<double> B(4);
+	Variable<double> C(2);
 
 	//need to find a clean way of using one class name instead of specialising per last used operator
-	MulResult E = A*(B+C);
+	MulResult<double> E = A*(B+C);
 	
 	double errorMargin=1;	//solve to 0.1 absolute error
 	double stepSize = 0.1;	//only move by 10% of the distance at a time
-	int nFreeVars = 3;	//vary three variables in the attempt
-	Variable *freeVars[nFreeVars] = {&A, &B, &C};
+
+	int nFreeVars = 2;	//vary three variables in the attempt
+	Variable<double> *freeVars[nFreeVars] = {&A, &C};
 
 	while (E.value() > errorMargin)
 	{
